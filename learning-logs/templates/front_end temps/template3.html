@@ -1,0 +1,2469 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Font Awesome Icons -->
+     <style>
+      /* Start global rules */
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+   
+   }
+.fas {
+  color: green !important;
+}
+a {
+ text-decoration: none;
+}
+.verse {
+    font-weight: 800;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+:root {
+    --main-color: #4CAF50;
+    --main-color-alter: #1787e0;
+    --main-transition: .3s;
+    --main-padding: 100px;
+    --section-background: #ececec;
+}
+html {
+    scroll-behavior: smooth;
+   }
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.container {
+       padding-left: 15px;
+       padding-right: 15px;
+       margin-left: auto;
+       margin-right: auto;
+       /* min-height: 97.09px; */
+   }
+/* small */
+   @media screen and (min-width:768px) {
+       .container {
+           width: 750px; 
+       }
+   }
+/* medium */
+   @media screen and (min-width:992px) {
+       .container {
+           width: 970px;  
+       }
+   }
+/* large */
+   @media screen and (min-width:1200px) {
+       .container {
+           width: 1170px;
+       }
+   }
+/* End global rules    */
+/* start components */
+.main-title {
+    text-transform: uppercase;
+    margin: 0 auto 80px;
+    border: 2px solid black;
+    padding: 10px 20px;
+    font-size: 30px;
+    width: fit-content;
+    position: relative;
+    z-index: 1;
+    transition: var(--main-transition);
+    font-weight: bold;
+    
+}
+.main-title:hover {
+    color: white;  
+    border: 2px solid white;
+    transition-delay: .5s;  
+}
+.main-title:hover::before {
+animation: left-move .5s linear forwards;
+}
+.main-title:hover::after {
+animation: right-move .5s linear forwards;
+}
+.main-title::before {  
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--main-color);
+    border-radius: 50%;
+    left: -35px;
+    top: 50%;
+    translate: 0 -50%;
+    z-index: -1;
+}  
+.main-title::after { 
+    content: "";
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background: var(--main-color);
+    border-radius: 50%;
+    right: -35px;
+    top: 50%;
+    translate: 0 -50%;
+    z-index: -1;
+}   
+
+
+/* End components */
+/*  start .header  */
+.header {
+background-color: white;
+box-shadow: 0 0 10px #ddd;
+}
+.header .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-transform: capitalize;
+    background-color: rgb(255, 255, 255);
+    position: relative;
+    font-family: 'Cairo', sans-serif;
+}
+.fa-angle-double-down {
+    color: rgb(228, 22, 22);
+}
+.header .logo {
+color: var(--main-color);
+font-weight: bold;
+height: 72px;
+display: flex;
+justify-content: center;
+align-items: center;
+font-size: 26px;
+}
+@media (max-width: 767px) {
+    .header .logo {
+        width: 100%;
+        height: 50px;
+    }
+}
+.header  .main-nav {
+    display: flex;
+}
+@media (max-width: 767px) {
+    .header  .main-nav {
+       margin: auto;
+    }
+}
+.header .main-nav > li > a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    padding: 0 30px;
+    position: relative;
+    height: 72px;
+    transition: var(--main-transition);
+}
+@media (max-width: 767px) {
+    .header .main-nav > li > a {
+        padding: 10px;
+        font-size: 15px;
+        height: 40px;
+        }
+}
+.header .main-nav > li > a::before {
+    content: "";
+    width: 0;
+    height: 2px;
+    background-color: var(--main-color-alter);
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: var(--main-transition);
+}
+.header .main-nav > li > a:hover::before {
+    width: 100%;
+}
+
+.header .container > ul > li > a:hover {
+    color: var(--main-color);
+    background-color: #fafafa;
+
+}
+.header .mega-menu {
+    position: absolute;
+    display: flex;
+    left: 0;
+    padding: 21px;
+    justify-content: space-between;
+    width: 100%;
+    top: calc(100% + 40px);
+    opacity: 0;
+    z-index: -1;
+    transition: var(--main-transition);
+    background-color: white;
+    gap: 40px;
+    border-bottom: 3px solid var(--main-color);
+
+}
+.header .main-nav li:hover .mega-menu {
+    opacity: 1;
+    z-index: 100;
+    top: calc(100% + 1px);
+}
+.header .mega-menu .image img {
+    width: 500px;
+    max-width: 100%;
+}
+@media (max-width:991px) {
+    .header .mega-menu .image img {
+        display: none;
+    }
+    .header .mega-menu {
+        justify-content: space-between;
+    }
+}
+@media (max-width:767px) {
+   
+    .header .mega-menu {
+        flex-direction: column;
+        gap: 0px;
+        padding: 5px;
+    }
+    .header .mega-menu .links:first-of-type li:last-child {
+        border-bottom: 1px solid #e9e6e6;
+    }
+}
+.header .mega-menu .links {
+    flex: 1;
+}
+.header .mega-menu .links li {
+position: relative;
+}
+.header .mega-menu .links li::before {
+content: "";
+position: absolute;
+width: 0;
+height: 100%;
+background-color: #ececec;
+transition: var(--main-transition);
+z-index: -1;
+}
+.header .container img {
+    width: 100px;
+    height: auto;
+}
+.header .mega-menu .links li:hover::before {
+    width: 100%;
+}
+.header .mega-menu .links li a {
+    color: var(--main-color);
+    padding: 15px;
+    display: block;
+    font-weight: bold;
+    min-width: 200px;
+}
+.header .mega-menu .links li:not(:last-child) {
+    border-bottom: 1px solid #e9e6e6;
+}
+.header .mega-menu .links li a i {
+margin-right: 10px;
+}
+
+/* end .header  */
+/* Start landing */
+.landing {
+position: relative;
+background-image: url(https://res.cloudinary.com/dsg9dgcei/image/upload/v1735072609/natureheaven_j7nxrl.jpg);
+background-size: cover;
+}
+.landing::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ececec;
+    z-index: -1;
+    transform: skewY(-6deg);
+    top: -80px;
+    left: 0;
+}
+.landing .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 72px);
+    padding-bottom: 120px;
+
+}
+@media (max-width: 991px) {
+    .landing .container  {
+        justify-content: center;
+        text-align: center;
+    }
+}
+.landing .container .text {
+    text-align: center;
+    margin-top: -150px;}
+.landing .container .text h4 {
+    font-weight: 800;
+    font-size: 55px;
+    text-transform: capitalize;
+}
+@media (max-width:767px) {
+    .landing .text h4 {
+        font-size: 25px;
+        margin-bottom: 20px;
+    }
+    .landing  .container .text {
+        flex-basis: auto;
+    }
+}
+.landing .container .text p {
+line-height: 1.5;
+font-size: 25px;
+}
+.landing .container img {
+    width: 550px;
+    position: relative;
+}
+@media (max-width: 991px) {
+    .landing .container img {
+        display: none;
+    }
+    .landing .text p {
+        font-size: 18px;
+    }
+}
+.landing .go-down {
+    margin-left: 50%;
+    color: var(--main-color);
+    bottom: 20px;
+    translate: -50%;
+    position: absolute;
+
+}
+.landing .go-down:hover {
+color: var(--main-color-alter);
+}
+.landing .go-down i {
+    animation: bouncing 1.5s infinite;
+}
+
+/* End landing */
+/* Start article */
+.articles {
+padding-top: var(--main-padding);
+padding-bottom: var(--main-padding);
+}
+.articles .cartoon {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+@media (max-width:767px) {
+    .articles .cartoon .box {
+        flex-basis: 100%;
+    }
+}
+@media (min-width:768px) {
+    .articles .cartoon .box {
+        flex-basis: calc(50% - 10px);
+    }
+    .articles .cartoon {
+        gap: 10px;
+    }
+}
+@media (min-width:1092px) {
+    .articles .cartoon .box {
+        flex-basis: calc(25% - 15px);
+    }
+    .articles .cartoon {
+        gap: 5px;
+    }
+}
+.articles .box {
+    transition: var(--main-transition);
+    border-radius: 6px;
+    overflow: hidden;
+    background-color: #ececec;
+}
+.articles .cartoon .box:hover {
+translate: 0 -20px;
+}
+.articles .cartoon .box .image img {
+    width: 100%;
+    height: 200px;}
+.articles .cartoon .box .text {
+    padding: 10px;
+    border-bottom: 2px solid #e6e6e7;
+}
+.articles .cartoon .box .text h4 {
+font-size: 20px;
+}
+.articles .cartoon .box .text p {
+    line-height: 1.5;
+    color: #000000c9;
+} 
+.articles .box a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    color: var(--main-color);
+    font-weight: bold;
+}
+.articles .box a i {
+    font-size: 12px;
+}
+.articles .box:hover i {
+    animation: go-go .5s linear infinite;
+}
+
+
+/* End article */
+/* Start gallery */
+.gallery {
+    padding-top: var(--main-padding);
+    background: var(--section-background);
+    padding-bottom: var(--main-padding);
+}
+.gallery .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 40px;
+}
+.gallery .container .image:hover img {
+transition: var(--main-transition);
+rotate: 6deg;
+scale: 1.1;
+}
+.gallery .container .image img {
+max-width: 100%;
+}
+.gallery .container .image {
+    position: relative;
+}
+.gallery .container .image::before {
+    content: "";
+    position: absolute;
+    background: rgb(250, 250, 250,20%);
+    width: 50px;
+    height: 50px;
+    translate: -50% -50%;
+    left: 50%;
+    top: 50%;
+    z-index: 19;
+    opacity: 0;
+}
+.gallery .container .image:hover::before {
+    animation: flashing .5s ;
+}
+.gallery .container .box {
+    border: 15px solid white;
+    overflow: hidden;
+    box-shadow: 0px 12px 20px 0px rgb(0 0 0 / 13%), 0px 2px 4px 0px rgb(0 0 0 / 12%);
+    
+}
+/* End gallery */
+/* Start features */
+.features {
+padding-top: var(--main-padding);
+padding-bottom: var(--main-padding);
+background-color: white;
+}
+.features .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 40px;
+}
+.features .container .feat-box {
+    text-align: center;
+border: 1px solid #ccc;
+position: relative;
+overflow: hidden;
+background-color: white;
+}
+.features .container .img-holder {
+    position: relative;
+}
+.quality .img-holder::before {
+    background-color: #ff000078;
+}
+.features .container .quality h3::after {
+    background-color: red;
+}
+.features .quality .link {
+    color: red;
+    border-color: red; 
+    background-image: linear-gradient(to right, red 50%, white 50%);
+    background-size: 200% 10%;
+    background-position: right;
+}
+.time .img-holder::before {
+    background-color: rgb(35 167 175/ 60%);
+}
+.features .container .time h3::after {
+    background-color: #0098a7;
+}
+.features .time .link {
+    color: #0098a7;
+    border-color: #0098a7; 
+    background-image: linear-gradient(to right, #0098a7 50%, white 50%);
+    background-size: 200% 10%;
+    background-position: right;
+}
+.passion .img-holder::before {
+    background-color: rgb(3 169 244 / 60%);
+}
+.features .container .passion h3::after {
+    background-color: rgb(0 172 255 / 60%);
+}
+.features .passion .link {
+    color: rgb(0 172 255 / 60%);
+    border-color:rgb(0 172 255 / 60%);
+    background-image: linear-gradient(to right, rgb(0 172 255 / 60%) 50%, white 50%);
+    background-size: 200% 10%;
+    background-position: right;
+}
+.features .feat-box:hover  .link {
+    background-position: left;
+    color: rgb(214, 36, 36);
+    background-color: #ccc;
+}
+
+.features .container .feat-box img {
+    max-width: 100%;
+}
+.features .container .feat-box .text {
+    padding: 20px;
+    position: relative;
+z-index: 5;
+}
+.features .container .feat-box .text h3 {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 40px;
+    margin: 0 auto 30px;
+    position: relative;
+    width: fit-content;
+}
+.features .container .feat-box .text p {
+    color: #777;
+    font-size: 20px;
+    line-height: 2;
+}
+.features .container .feat-box .link {
+    width: fit-content;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    padding: 6px 35px;
+    display: block;
+    margin: 50px auto 0;
+    border-radius: 10px;
+    position: relative;
+    border: 2px solid;
+    transition: var(--main-transition);
+}
+.features  .feat-box h3::after {
+    content: "";
+    position: absolute;
+    height: 5px;
+    left: 15px;
+    bottom: -17px;
+    width: calc(100% - 30px);
+    
+    
+}
+
+/* End features */
+/* Start testimonials */
+.testimonials {
+padding-top: var(--main-padding);
+padding-bottom: var(--main-padding);
+background-color: var(--section-background);
+}
+.testimonials .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 50px;
+}
+.testimonials .container .mon-box {
+position: relative;
+background-color: white;
+padding: 15px;
+border-radius: 6px;
+}
+.testimonials .container .mon-box .image {
+    border-radius: 50%;
+    width: 100px;
+    position: absolute;
+    right: -10px;
+    top: -50%;
+    translate: 0 50%;
+    border: 10px solid var(--section-background);
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+.testimonials .container .mon-box img {
+ max-width: 100%;
+ border-radius: 50%;
+
+}
+.testimonials .container .mon-box h2 {
+text-transform: capitalize;
+font-size: 20px;
+color: var(--main-color);
+}
+.testimonials .container .mon-box h2 + span {
+    text-transform: capitalize;
+    color: #666;
+    margin: 10px 0;
+    display: block;
+
+}
+.testimonials .container .mon-box .stars {
+ background-color: white;
+}
+.testimonials .container .mon-box p {
+    color: #777;
+}
+.testimonials .filled {
+    color: gold;
+}
+
+/* End testimonials */
+/* Start team */
+.team {
+    padding-top: var(--main-padding);
+    padding-bottom: var(--main-padding);
+    position: relative;
+    z-index: 3;
+}
+.team .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 50px;
+}
+.team .container .box {
+position: relative;
+}
+.team .box::before,
+.team .box::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    right: 0;
+    bottom: 0;
+    border-radius: 10px;
+    transition: var(--main-transition);
+}
+.team .box::after {
+    background-color: #e4e4e4;
+    width:0;
+    z-index: -1;
+}
+.team .box:hover::after {
+    width: 85%;
+}
+.team .box:hover img {
+    filter: grayscale(100%);
+}
+.team .box::before {
+    width: 85%;
+    background: #f6f6f6;
+    z-index: -2;
+}
+.team .box .img-icon {
+display: flex;
+padding-top: 60px;
+}
+.team .box .img-icon .social-icons {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+.team .social-icons i {
+    margin-top: 30px;
+    color: #777;
+    cursor: pointer;
+    transition: var(--main-transition);
+}
+.team i:hover {
+    color: gold;
+}
+.team .box .text {
+    padding-left: 80px;
+}
+
+.team .box img {
+    width: calc(100% - 60px);
+    border-radius: 10px;
+    transition: var(--main-transition);
+}
+.team .text h2 {
+    text-transform: capitalize;
+    color: var(--main-color);
+}
+.team .text p {
+    color: #777;
+    text-transform: capitalize;
+    margin-top: 10px;
+}
+/* End team */
+/* Start services */
+.services {
+    padding-top: var(--main-padding);
+    padding-bottom: var(--main-padding);
+    background-color: var(--section-background);
+}
+.services .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(300px,1fr));
+    gap: 40px;
+
+}
+.services .container .box {
+    background-color: white;
+    position: relative;
+    counter-increment: up;
+    transition: var(--main-transition);
+    text-align: center;
+
+}
+.services .box::before {
+    content: "";
+    position: absolute;
+    background-color: var(--main-color);
+    height: 2px;
+    width: 0;
+    top: 0;
+    left: 50%;
+    translate: -50%;
+    transition: var(--main-transition);
+}
+.services .box:hover {
+    translate: 0 -10px;
+}
+.services .box:hover::before {
+    width: 100%;
+}
+.services .box  i {
+ margin: 30px 0 10px;
+ color: #d5d5d5;
+}
+  
+.services .container .box  h3 {
+    text-transform: capitalize;
+    color: var(--main-color);
+    font-size: 25px;
+    margin: 0 0 30px;
+}
+.services .info {
+    text-align: right;
+    padding: 15px;
+    text-transform: capitalize;
+    background-color: #f9f9f9;
+    position: relative;
+}
+
+.services .info::before {
+    content: "0"counter(up);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    font-weight: bold;
+    background: var(--main-color);
+    color: white;
+    height: 100%;
+    width: 80px;
+    padding-right: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
+}
+.services .info::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 40px;
+    background: #d5d5d5;
+    top: 0;
+    left: 72px;
+    transform: skewX(-28deg);
+}
+.services .info a {
+    text-transform: capitalize;
+    display: block;
+    color: var(--main-color);
+    font-weight: normal;
+}
+/* End services */
+/* Start skills */
+.skills {
+    padding-top: var(--main-padding);
+    padding-bottom: var(--main-padding);
+}
+.skills .container {
+    display: flex;
+}
+.skills .container .prog-holder {
+    flex: 1;
+}
+.skills .progress {
+    margin-top: 30px
+}
+.skills .progress p {
+    text-transform: uppercase;
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+.skills .progress div {
+    width: 100%;
+    height: 30px;
+    background: #d5d5d5;
+}
+
+.skills .progress div span {
+    background-color: var(--main-color);
+    height: 100%;
+    display: block;
+    position: relative;
+}
+.skills .progress div span::before {
+    content: attr(data-per);
+    position: absolute;
+    top: -50px;
+    right: -15px;
+    border: 1px solid black;
+    padding: 0px 5px;
+    background: white;
+    color: var(--main-color);
+    border-radius: 5px;
+    font-size: 13px;
+    font-weight: bold;
+}
+.skills .image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;}
+.skills .image img {
+    width: 100%;
+}
+@media (max-width:991px) {
+    .skills .image img {
+        display: none;
+    }
+}
+/* End skills */
+/* Start work   */
+.works {
+    padding-top: var(--main-padding);
+    padding-bottom: var(--main-padding);
+    background-color: var(--section-background);
+  
+}
+.works .container {
+    display: flex;
+    gap: 5%;
+    align-items: center;
+}
+@media (max-width:991px) {
+    .works .container {
+        flex-direction: column;
+    }
+    .works .container img {
+        max-width: 100%;
+    
+    }
+}
+.works .box {
+    display: flex;
+    align-items: center;
+    border: 1px solid white;
+    background-color: #ccc;
+    margin-bottom: 22px;
+    border-radius: 7px;
+    padding: 20px 40px;
+    position: relative;
+    z-index: 3;
+    overflow: hidden;
+    padding-bottom: 40px
+}
+.works .container .box::before {
+    content: "";
+    position: absolute;
+    background-color: #ededed;
+    width: 0;
+    height: 0;
+    translate: -50% -50%;
+    left: 50%;
+    top: 50%;
+    z-index: -1;
+    transition: 1s;
+}
+.works .box:hover::before {
+    width: 110%;
+    height: 110%;
+}
+.works .box img {
+width: 50px;
+margin-right: 50px;
+}
+.works .box h3 {
+    font-weight: bold;
+    text-transform: capitalize;
+    font-size: 25px;
+}
+.works .box p {
+    font-size: 17px;
+    color: #777;
+    line-height: 1.5;
+}
+/*  End work   */
+/* Start events */
+.events {
+    padding-top: var(--main-padding);
+    padding-bottom: var(--main-padding);
+    position: relative;
+}
+.events .container {
+    display: flex;
+    position: relative;
+}
+.events .container::before {
+    content: "";
+    width: 204px;
+    height: 200px;
+    top: -65px;
+    right: -85px;
+    position: absolute;
+}
+.events .container::after {
+    content: "";
+    width: 204px;
+    height: 200px;
+    bottom: -137px;
+    left: -84px;
+    position: absolute;
+}
+@media (max-width:767px) {
+    .events .container::before,
+    .events .container::after {
+        display: none;
+    }
+}
+.events .left, .events .right {
+    width: 180px;
+    height: 180px;
+    position: absolute;
+}
+
+.events .right {
+    margin-left: 85%;
+}
+@media (max-width:991px) {
+    .events img {
+        display: none;
+    }
+}
+
+.events .time-boxes {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 37px 0 30px;
+}
+.events .box {
+    border: 1px solid #ccc;
+    padding: 30px 15px;
+    border-radius: 8px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: var(--main-transition);
+}
+.events .box:hover {
+    border-color: var(--main-color);
+}
+.events .box::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background: #ccc;
+    left: 0;
+    bottom: 30px;
+    transition: var(--main-transition);
+
+}
+.events .box:hover::before {
+    background: var(--main-color);
+}
+.events .box h2 { 
+    color: var(--main-color);
+    font-size: 30px;
+
+}
+.events .box h2 + p {
+    position: relative;
+    top: 22px;
+    color: #666;
+    font-size: 14px;
+}
+.events .time-right > h2 {
+    margin: 40px 0 30px;
+    text-align: center;
+    font-size: 30px;
+}
+.works .container .image img {
+    width: 400px;
+}
+.events .time-right > p {
+    text-align: center;
+    line-height: 1.5;
+    font-size: 18px;
+    color: #777;
+}
+.events form {
+    margin: 77px auto;
+    gap: 20px;
+    display: flex;
+    justify-content: center;
+    background: rgb(125 108 108);
+    padding: 40px;
+    width: 550px;
+    max-width: 100%;
+    border-radius: 32px;
+    align-items: center;
+}
+@media (max-width:767px) {
+    .events form {
+        border-radius: 0;
+        flex-direction: column;
+        gap: 10px;
+        max-width: 100%;
+    }
+    .events form input[type="submit"] {
+        width: 100%;
+    }
+}
+.events form input[type="text"] {
+    outline: none;
+    border: none;
+    width: 100%;
+    padding: 20px;
+    border-radius: inherit;
+    caret-color: var(--main-color);
+    transition: var(--main-transition);
+}
+.events form input[type="submit"] {
+    background: var(--main-color);
+    text-transform: capitalize;
+    color: white;
+    padding: 20px;
+    border-radius: inherit;
+    font-weight: bold;
+    border: none;
+
+}
+.events form input[type="text"]:focus::placeholder {
+    opacity: 0;
+}
+.events form input::placeholder {
+    text-transform: capitalize;
+    color: #777;
+}
+/* End events */
+/* start pricing */
+.pricing {
+    padding-top: var(--main-padding);
+    padding-bottom: var(--main-padding);
+    background-color: var(--section-background);
+    position: relative;
+    z-index: 3;
+}
+.pricing .container {
+    display: flex;
+    gap: 30px;
+    position: relative;
+    z-index: 5;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.pricing .container .box {
+    background-color: white;
+    min-width: 360px;
+    padding-bottom:  40px;
+    position: relative;
+    z-index: 1;
+    box-shadow: 0 12px 20px 0 rgb(0 0 0 / 13%), 0 2px 4px 0 rgb(0 0 0 / 12%);
+}
+.pricing .container .box::before {
+    content: "";
+    width:0;
+    height: 50%;
+    background-color: #f6f6f6;
+    position: absolute;
+    left: 0;
+    top: 0;
+    transition: var(--main-transition);
+    z-index: -1;
+}
+.pricing .container .box::after {
+    content: "";
+    width:0;
+    height: 50%;
+    background-color: #f6f6f6;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    transition: var(--main-transition);
+    z-index: -1;
+}
+.pricing .container .box:hover::before,
+.pricing .box:hover::after {
+    width: 100%;
+}
+.pricing .container .box:nth-child(2) {
+    translate: 0 -20px;
+}
+@media (max-width:1115px) {
+    .pricing .container .box:nth-child(2) {
+        translate: 0 0;
+    }
+
+}
+.pricing .container .head {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 30px 0 14px;
+}
+.pricing .container .head h3 {
+    font-size: 30px;
+    text-transform: capitalize;
+}
+.pricing .container .head h2 {
+    color: var(--main-color);
+    font-size: 50px;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+.pricing .container .head span {
+    margin-top: -31px;
+    color: #777;
+    text-transform: capitalize;
+}
+.pricing img {
+    width: 80px;
+}
+.pricing .container .details li {
+    padding: 20px;
+    border-top: 1px solid rgb(238, 238, 238);
+    position: relative;
+    z-index: 1;
+}
+.pricing .container .details li::before {
+    font-family: "font awesome 5 free";
+    content: "\f00c";
+    font-weight: 900;
+    color: var(--main-color);
+    margin-right: 10px;
+    font-size: 20px;
+    position: relative;
+    top: 3px;
+}
+.pricing .container .choice {
+    margin: 15px auto;
+    display: block;
+    text-transform: capitalize;
+    border: 2px solid var(--main-color);
+    width: fit-content;
+    padding: 10px 20px;
+    border-radius: 11px;
+    color: var(--main-color);
+    font-weight: bold;
+    transition: var(--main-transition);
+}
+.pricing .choice:hover {
+    background-color: var(--main-color-alter);
+    border-color: rgb(0, 0, 0,50%);
+    color: white;
+}
+.pricing .popular .label {
+    background: var(--main-color);
+    color: white;
+    width: fit-content;
+    writing-mode: vertical-lr;
+    position: absolute;
+    right: 45px;
+    padding: 10px 5px 35px;
+    font-weight: bold;
+    font-size: 20px;
+}
+.pricing .label::before {
+    content: "";
+    position: absolute;
+    border-width: 20px;
+    border-color: transparent transparent white transparent;
+    border-style: solid;
+    bottom: 0;
+    left: 50%;
+    translate: -50%;
+}
+/* End pricing */
+/* Start video  */
+.video {
+    padding-top: var(--main-padding);
+    padding-bottom: var(--main-padding);
+}
+.video .holder {
+display: flex;
+}
+@media (max-width:991px) {
+    .video .holder  {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+.video .holder .description {
+    border: 1px solid #eee;
+}
+.video .holder .description h3 {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    text-transform: capitalize;
+    padding: 20px;
+    background-color: rgb(244, 244, 244);
+    font-size: 15px;
+}
+.video .holder .description li {
+padding: 20px;
+min-width: 300px;
+border-top: solid 1px #eee;
+}
+.video .description li:hover {
+    background-color: rgb(250, 250, 250);
+}
+.video .holder .description li a {
+    color:black;
+    transition: var(--main-transition);
+}
+.video  .description li a:hover {
+    color: var(--main-color);
+} 
+.video  .description li span {
+    display: block;
+    color: #777;
+}
+.video  .video-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: rgb(226, 226, 226);
+    padding: 10px;
+}
+.video  .video-right img {
+width: 100%;
+}
+.video  .video-right p{
+    background: white;
+    padding: 15px;
+    margin-top: 15px;
+}
+
+/* End video  */
+/* Start stats  */
+.stats {
+    padding-top: var(--main-padding);
+    padding-bottom: var(--main-padding);
+    /* background-color: var(--section-background); */
+    background-image: url(https://res.cloudinary.com/dsg9dgcei/image/upload/v1735116759/statsback_rfkfym.jpg);
+    background-size: cover;
+    position: relative;
+}
+.stats::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #000000bd;
+    top: 0;
+    left: 0;
+}
+.stats .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+    gap: 10px;
+
+}
+.stats .container .box {
+    background: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    position: relative;
+}
+.stats .box::before,
+.stats .box::after {
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 4px;
+    background-color: var(--main-color);
+    transition: calc(var(--main-transition) + .5s );
+}
+.stats .box::before {
+left: 0px;
+top: 0;
+}
+.stats .box::after {
+right: 0px;
+bottom: 0;
+}
+.stats .box:hover:before,
+.stats .box:hover:after {
+    height: 100%;
+}
+
+.stats .container .box .number {
+    font-size: 51px;
+    font-weight: bold;
+    margin: 20px 0;
+}
+.stats .container .box .text {
+    color: var(--main-color);
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    text-transform: capitalize;
+    font-family: math;
+}
+.stats h2 {
+    text-align: center;
+    color: white;
+    text-transform: capitalize;
+    font-size: 33px;
+    margin-bottom: 30px;
+    position: relative;
+}
+/* end stats  *
+/* Start discount  */
+.discount {
+    display: flex;
+flex-wrap: wrap;
+text-align: center;
+
+}
+.discount .box-one {
+    flex-basis: 50%;
+    padding-top: var(--main-padding);
+    padding-bottom: 40px;
+    position: relative;
+    background-size: cover;
+    color: white;
+    padding-left: 80px;
+    padding-right: 80px;
+}
+.discount .box-one::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: #4CAF50
+}
+.discount .box-one h2 {
+    position: relative;
+    text-transform: capitalize;
+    font-size: 39px;
+    top: -50px;
+    letter-spacing: -2px;
+
+}
+.discount .box-one p{
+    position: relative;
+    font-size: 19px;
+    top: -20px;
+    line-height: 1.5;
+    text-align: center;
+}
+.discount .box-one img {
+    position: relative;
+    width: 220px;
+    margin-top: 25px;
+    left: -12px;
+    top: -44px;
+}
+
+.discount .box-two {
+    flex-basis: 50%;
+    padding: 30px 0 40px;
+    
+}
+@media (max-width:991px) {
+    .discount div[class*="box-"] {
+        flex-basis:100% ;
+        max-width: 100%;
+    } 
+    }
+.discount .box-two h2 {
+    text-transform: capitalize;
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 22px;
+    letter-spacing: -2px;
+
+}
+
+.discount .box-two form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+}
+.discount .box-two form input[type="text"],
+.discount .box-two form input[type="email"],
+.discount .box-two form input[type="number"],
+.discount .box-two textarea {
+    height: 40px;
+    width: 100%;
+    max-width: 323px;
+    border: 1px solid #4caf5096; /* Light border for a subtle look */
+    outline: none;
+    background: #f9f9f9;
+    padding: 10px 15px;
+    font-size: 16px;
+    color: #333;
+    caret-color: var(--main-color);
+    border-radius: 8px; /* Slight rounding */
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.discount .box-two form input[type="text"]::placeholder,
+.discount .box-two form input[type="email"]::placeholder,
+.discount .box-two form input[type="number"]::placeholder,
+.discount .box-two textarea::placeholder {
+    text-transform: capitalize;
+    font-size: 15px;
+    font-family: sans-serif;
+    color: #aaa; /* Lighter placeholder color for elegance */
+}
+
+.discount .box-two textarea {
+    height: 200px;
+    resize: none;
+}
+.discount .box-two form input[type="submit"] {
+    width: 323px;
+    background: var(--main-color);
+    color: white;
+    font-weight: bold;
+    padding: 15px;
+    border: none;
+    font-size: 22px;
+    text-transform: capitalize;
+    border-radius: 7px;
+}
+/* end discount  */
+.footer {
+padding-top: 50px;
+background-color: rgb(25, 25, 25);
+color: rgb(185, 185, 185);
+}
+.footer > p {
+    display: flex;
+    justify-content: center;
+    padding: 25px;
+    border-top: 1px solid #e4e4e4;
+ 
+}
+.footer .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 40px;
+    padding-bottom: 50px
+}
+.footer  .footer-gallery img {
+    width: 78px;
+    margin: 2px;
+    border: 3px solid white;
+
+}
+.footer .box:first-of-type {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+.footer .box:first-of-type .elzero {
+    font-size: 53px;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+.footer .box:first-of-type .icons {
+    display: flex;
+    gap: 22px;
+}
+.footer .box:first-of-type .icons i {
+    font-size: 20px;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    background-color: #313131;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transition: var(--main-transition);
+}
+@media (max-width:767px) {
+    .footer .box:first-of-type .icons {
+        justify-content: center;
+    }
+}
+.footer .box:first-of-type .icons i[class*="face"]:hover,
+.footer .box:first-of-type .icons i[class*="twi"]:hover {
+    background-color: var(--main-color);
+}
+.footer .box:first-of-type .icons i[class*="you"]:hover {
+    background-color: red;
+}
+
+.footer .box:nth-of-type(2) li a {
+    padding: 10px;
+    display: block;
+    color: rgb(185, 185, 185);
+    position: relative;
+    transition: var(--main-transition);   
+    text-transform: capitalize;
+}
+.footer .box:nth-of-type(2) li a:hover {
+    margin-left: 15px;
+    color: white;
+}
+.footer .box:nth-of-type(2) li a::before {
+    font-family: "font awesome 5 free";
+    content: "\f101";
+    font-weight: 900;
+    color: var(--main-color);
+    margin-right: 13px;
+    margin-left: -15px;
+}
+.footer .box:nth-of-type(2) li:not(li:last-child) {
+    border-bottom: 1px solid rgb(68, 68, 68);}
+.footer .fourth {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.footer .fourth i {
+    color: var(--main-color);
+    font-size: 25px;
+    margin-right: 20px;
+}
+.footer .fourth .line {
+    display: flex;
+    align-items: center;
+}
+.footer .line p {  
+    line-height: 1.6;
+}
+@media (max-width:767px) {
+    .footer {
+        text-align: center;
+    }
+    .footer .line {
+        flex-direction: column;
+    }
+
+    .footer .line i {
+        margin-bottom: 10px;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Start animation */
+@keyframes up-and-down {
+    0%,100% {
+        top: 0;
+    }
+    50% {
+        top: -40px;
+    }
+}
+@keyframes bouncing {
+    0%,40%,60%,80%,100% {
+        translate: 0;
+    }
+    20%,50% {
+        translate: 0 14px;
+    }
+    
+}
+@keyframes left-move {
+    50% {
+        left:0;
+        width: 12px;
+        height: 12px;
+    }
+    100% {
+        left: 0;
+        width: 51%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+@keyframes right-move {
+    50% {
+        right:0;
+        width: 12px;
+        height: 12px;
+    }
+    100% {
+        right: 0;
+        width: 50%;
+        height: 100%;
+        border-radius: 0;
+    }
+}
+@keyframes go-go {
+    100% {
+        translate: 6px;
+    }
+}
+@keyframes flashing {
+    0%,40% {
+        opacity: 1;
+           }
+    100% {
+        opacity: 0;
+        width: 200%;
+        height: 200%;
+    }
+}  
+    
+
+    
+/* End animation */
+     </style>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735112523/4447748_hkqim8.png">
+    <!-- render all elements normally  -->
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&#038;display=swap" rel="stylesheet" />
+    <title>Nature Beauty</title>
+</head>
+<body>
+   <!-- start header -->
+   <div class="header">
+    <div class="container">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735073930/logo_qc5m2b.png" alt="">
+     <ul class="main-nav">
+        <li><a href="#articles">articles</a></li>
+        <li><a href="#gallery">gallery</a></li>
+        <li><a href="#features">features</a></li>
+        <li><a href="#other links">other links</a>
+        <div class="mega-menu">
+            <div class="image">
+                <img src="{% static 'images/frontend/megamenu.png' %}" alt="">
+            </div>
+           <ul class="links">
+            <li>
+                <a href="#testimonials"><i class="far fa-comments fa-fw"></i> Testimonials</a>
+              </li>
+              <li>
+                <a href="#team"><i class="far fa-user fa-fw"></i> Team Members</a>
+              </li>
+              <li>
+                <a href="#services"><i class="far fa-building fa-fw"></i> Services</a>
+              </li>
+              <li>
+                <a href="#our-skills"><i class="far fa-check-circle fa-fw"></i> Our Skills</a>
+              </li>
+              <li>
+                <a href="#work-steps"><i class="far fa-clipboard fa-fw"></i> How It Works</a>
+              </li>
+           </ul>
+           <ul class="links">
+            <li>
+                <a href="#events"><i class="far fa-calendar-alt fa-fw"></i> Events</a>
+              </li>
+              <li>
+                <a href="#pricing"><i class="fas fa-server fa-fw"></i> Pricing Plans</a>
+              </li>
+              <li>
+                <a href="#video"><i class="far fa-play-circle fa-fw"></i> Top Videos</a>
+              </li>
+              <li>
+                <a href="#stats"><i class="far fa-chart-bar fa-fw"></i> Stats</a>
+              </li>
+              <li>
+                <a href="#discount"><i class="fas fa-percent fa-fw"></i> Request A Discount</a>
+              </li>
+           </ul>
+        </div>
+        </li>
+    </ul>
+    </div>
+</div>
+   <!-- End header -->
+   <!-- Start landing    -->
+   <div class="landing"> 
+    <div class="container">
+        <div class="text">
+          <h3 class="verse">أمن خلق السماوات والارض وأنزل لكم من السماء ماء فأنبتنا به حدائق ذات بهحة ما كان لكم أن تنبتوا شجرها أإله مع الله بل هم قوم يعدلون </h3>
+            <h4>Welcome to Nature's Haven</h4>
+            <p>Discover the beauty of our planet, from serene forests to majestic mountains. Let nature inspire and rejuvenate your soul.</p>
+        </div>
+    </div>
+    <a href="#articles" class="go-down">
+        <i class="fas fa-angle-double-down fa-2x"></i>
+    </a>
+</div>
+<!-- End landing -->
+<!-- Start articles -->
+<div class="articles" id="articles">
+    <div class="main-title">Nature Articles</div>
+    <div class="container">
+        <div class="cartoon">
+            <div class="box">
+                <div class="image">
+                    <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735073003/forest_dmrieb.jpg" alt="Forest">
+                </div>
+                <div class="text">
+                    <h4>Exploring the Forests</h4>
+                    <p>Take a deep dive into the lush greenery and the secrets hidden within the woods.</p>
+                </div>
+                <a href="#" class="link">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735072972/mountain_cf0iv9.jpg" alt="Mountains">
+                </div>
+                <div class="text">
+                    <h4>Majestic Mountains</h4>
+                    <p>Uncover the allure of towering peaks and the serenity they bring.</p>
+                </div>
+                <a href="#" class="link">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735072992/lake_z0urkk.jpg" alt="Lake">
+                </div>
+                <div class="text">
+                    <h4>Peaceful Lakes</h4>
+                    <p>Experience tranquility by the water and reflect on nature's calm.</p>
+                </div>
+                <a href="#" class="link">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735073099/desert_qpdfpo.jpg" alt="Desert">
+                </div>
+                <div class="text">
+                    <h4>Wonders of the Desert</h4>
+                    <p>Marvel at the golden sands and the life that thrives in harsh climates.</p>
+                </div>
+                <a href="#" class="link">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735073694/ocean_apaepd.jpg" alt="Ocean">
+                </div>
+                <div class="text">
+                    <h4>The Vast Ocean</h4>
+                    <p>Dive into the mysteries of the deep blue and its fascinating creatures.</p>
+                </div>
+                <a href="#" class="link">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735073632/garden_kr9dm5.jpg" alt="Garden">
+                </div>
+                <div class="text">
+                    <h4>Blossoming Gardens</h4>
+                    <p>Admire the vibrant colors and scents of blooming flowers.</p>
+                </div>
+                <a href="#" class="link">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735073313/jungle_kpy8u5.jpg" alt="Jungle">
+                </div>
+                <div class="text">
+                    <h4>Jungle Adventures</h4>
+                    <p>Embark on thrilling journeys through the dense and lively jungles.</p>
+                </div>
+                <a href="#" class="link">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+            <div class="box">
+                <div class="image">
+                    <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735073130/sunset_bkpshl.jpg" alt="Sunset">
+                </div>
+                <div class="text">
+                    <h4>Sunset Serenity</h4>
+                    <p>Witness breathtaking sunsets and the magic of twilight skies.</p>
+                </div>
+                <a href="#" class="link">Read More <i class="fas fa-long-arrow-alt-right"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+   <!-- End articles -->
+   <!-- Start gallery -->
+   
+   <div class="gallery" id="gallery">
+     <h2 class="main-title">gallery</h2>
+    <div class="container">
+      <div class="box">
+        <div class="image">
+          <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735112451/gallery1_pnsy6k.jpg" alt="">
+        </div>
+      </div>
+      <div class="box">
+        <div class="image">
+          <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735112412/gallery2_lhkjv9.jpg" alt="">
+        </div>
+      </div>
+      <div class="box">
+        <div class="image">
+          <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735112347/gallery3_afmabv.jpg" alt="">
+        </div>
+      </div>
+      <div class="box">
+        <div class="image">
+          <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735112359/gallery4_odcpni.jpg" alt="">
+        </div>
+      </div>
+      <div class="box">
+        <div class="image">
+          <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735111883/gallery5_mvc9c3.jpg" alt="">
+        </div>
+      </div>
+      <div class="box">
+        <div class="image">
+          <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735112387/gallery6_znlcqb.jpg" alt="">
+        </div>
+      </div>
+    </div>
+   </div>
+   <!-- End gallery -->
+   <!-- Start features -->
+   <div class="features" id="features">
+    <div class="main-title">Nature</div>
+    <div class="container">
+      <div class="feat-box sunrise">
+        <div class="img-holder">
+          <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735112724/sunrise_lt2w9x.jpg" alt="Sunrise">
+        </div>
+        <div class="text">
+          <h3>Sunrise</h3>
+          <p>Witness the serene beauty of a sunrise, painting the sky in vibrant colors.</p>
+          <a href="#" class="link">Discover More</a>
+        </div>
+      </div>
+      <div class="feat-box river">
+        <div class="img-holder">
+          <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735112721/river_dd8vbs.jpg" alt="River">
+        </div>      
+          <div class="text">
+          <h3>Rivers</h3>
+          <p>Flowing through valleys, rivers bring life and connect the landscapes.</p>
+          <a href="#" class="link">Discover More</a>
+        </div>
+      </div>
+      <div class="feat-box desert">
+        <div class="img-holder">
+          <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735112700/desert1_ft0fg4.jpg" alt="Desert">
+        </div>       
+        <div class="text">
+          <h3>Deserts</h3>
+          <p>Explore the vast and mysterious deserts, where beauty meets resilience.</p>
+          <a href="#" class="link">Discover More</a>
+        </div>
+      </div>
+    </div>
+</div>
+
+   <!-- End features -->
+  <!-- Start Testimonials -->
+<div class="testimonials" id="testimonials">
+  <h2 class="main-title">What Nature Lovers Say</h2>
+  <div class="container">
+    <div class="mon-box">
+      <div class="image">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735229527/avatar-06_o0rq95.png" alt="Nature Enthusiast">
+      </div>
+      <h2>Amira El-Taher</h2>
+      <span>Environmental Advocate</span>
+      <div class="stars">
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <p>The breathtaking landscapes and serene environments changed my perspective on the beauty of our planet.</p>
+    </div>
+    <div class="mon-box">
+      <div class="image">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735229508/avatar-01_bjaqhb.png" alt="Nature Explorer">
+      </div>
+      <h2>Farid Hassan</h2>
+      <span>Wildlife Photographer</span>
+      <div class="stars">
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <p>Capturing the raw beauty of nature through my lens has been an extraordinary journey.</p>
+    </div>
+    <div class="mon-box">
+      <div class="image">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735229509/avatar-02_ulvqhl.png" alt="Eco Enthusiast">
+      </div>
+      <h2>Leila Zouari</h2>
+      <span>Eco-Tourism Guide</span>
+      <div class="stars">
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <p>Guiding people through forests and mountains has deepened my love for Earth’s wonders.</p>
+    </div>
+    <div class="mon-box">
+      <div class="image">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735229509/avatar-03_g3ohto.png" alt="Green Advocate">
+      </div>
+      <h2>Nadir Ait</h2>
+      <span>Sustainability Enthusiast</span>
+      <div class="stars">
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <p>Connecting with nature has inspired me to live more sustainably and protect our world.</p>
+    </div>
+    <div class="mon-box">
+      <div class="image">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735229510/avatar-04_ok3ehx.png" alt="Forest Walker">
+      </div>
+      <h2>Sara Belghazi</h2>
+      <span>Hiker and Nature Blogger</span>
+      <div class="stars">
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <p>Every trail tells a story. Nature's beauty is a reminder of the peace we can find if we look for it.</p>
+    </div>
+    <div class="mon-box">
+      <div class="image">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735229511/avatar-05_ixev2j.png" alt="Nature Advocate">
+      </div>
+      <h2>Ali Mansour</h2>
+      <span>Nature Advocate</span>
+      <div class="stars">
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="filled fas fa-star"></i>
+        <i class="far fa-star"></i>
+      </div>
+      <p>Promoting the conservation of forests and wildlife is my life’s passion, and it’s deeply rewarding.</p>
+    </div>
+  </div>
+</div>
+
+   <!-- End Testimonials -->
+   <!-- Start team -->
+  <!-- Start Team -->
+<div class="team" id="team">
+  <h2 class="main-title">Our Nature Team</h2>
+  <div class="container">
+    <div class="box">
+      <div class="img-icon">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735113300/team-forest_xixnty.jpg" alt="Forest Explorer">
+        <div class="social-icons">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-whatsapp"></i>
+        </div>
+      </div>
+      <div class="text">
+        <h2>Forest Explorer</h2>
+        <p>Passionate about preserving lush forests and wildlife habitats.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="img-icon">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735113368/team-mountain_z6vlcd.jpg" alt="Mountain Advocate">
+        <div class="social-icons">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-whatsapp"></i>
+        </div>
+      </div>
+      <div class="text">
+        <h2>Mountain Advocate</h2>
+        <p>Dedicated to safeguarding the majestic peaks and valleys.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="img-icon">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735112989/team-ocean_trgxf4.jpg" alt="Ocean Guardian">
+        <div class="social-icons">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-whatsapp"></i>
+        </div>
+      </div>
+      <div class="text">
+        <h2>Ocean Guardian</h2>
+        <p>Committed to protecting marine life and coastal beauty.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="img-icon">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735112894/team-sunset_l8ox7f.jpg" alt="Sunset Seeker">
+        <div class="social-icons">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-whatsapp"></i>
+        </div>
+      </div>
+      <div class="text">
+        <h2>Sunset Seeker</h2>
+        <p>Inspired by the serenity of sunsets over tranquil landscapes.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="img-icon">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735113492/team-river_a55dhp.jpg" alt="River Protector">
+        <div class="social-icons">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-whatsapp"></i>
+        </div>
+      </div>
+      <div class="text">
+        <h2>River Protector</h2>
+        <p>Focused on cleaning and conserving rivers and streams.</p>
+      </div>
+    </div>
+
+    <div class="box">
+      <div class="img-icon">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735113481/team-desert_wgeknq.jpg" alt="Desert Defender">
+        <div class="social-icons">
+          <i class="fab fa-facebook"></i>
+          <i class="fab fa-instagram"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-whatsapp"></i>
+        </div>
+      </div>
+      <div class="text">
+        <h2>Desert Defender</h2>
+        <p>Championing the preservation of arid ecosystems.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+   <!-- End team -->
+   <!-- Start Services -->
+ <!-- Start Services -->
+<div class="services" id="services">
+  <h2 class="main-title">Our Nature Services</h2>
+  <div class="container">
+    <div class="box">
+      <i class="fas fa-tree fa-4x"></i>
+      <h3>Forest Conservation</h3>
+      <div class="info">
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+    <div class="box">
+      <i class="fas fa-water fa-4x"></i>
+      <h3>Water Management</h3>
+      <div class="info">
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+    <div class="box">
+      <i class="fas fa-mountain fa-4x"></i>
+      <h3>Mountain Preservation</h3>
+      <div class="info">
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+    <div class="box">
+      <i class="fas fa-leaf fa-4x"></i>
+      <h3>Eco-Friendly Landscaping</h3>
+      <div class="info">
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+    <div class="box">
+      <i class="fas fa-recycle fa-4x"></i>
+      <h3>Recycling Programs</h3>
+      <div class="info">
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+    <div class="box">
+      <i class="fas fa-bicycle fa-4x"></i>
+      <h3>Eco-Transportation</h3>
+      <div class="info">
+        <a href="#">Learn More</a>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Services -->
+
+<!-- Start Skills -->
+<div class="skills" id="our-skills">
+  <h2 class="main-title">Our Green Skills</h2>
+  <div class="container">
+    <div class="image">
+      <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735113522/nature-skills_csjf20.webp" alt="Nature Skills">
+    </div>
+    <div class="prog-holder">
+      <div class="progress">
+        <p>Tree Planting</p>
+        <div>
+          <span style="width: 90%;" data-per="90%"></span>
+        </div>
+      </div>
+      <div class="progress">
+        <p>Sustainable Farming</p>
+        <div>
+          <span style="width: 85%;" data-per="85%"></span>
+        </div>
+      </div>
+      <div class="progress">
+        <p>Wildlife Conservation</p>
+        <div>
+          <span style="width: 75%;" data-per="75%"></span>
+        </div>
+      </div>
+      <div class="progress">
+        <p>Eco-Friendly Design</p>
+        <div>
+          <span style="width: 80%;" data-per="80%"></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Skills -->
+
+   <!-- End skills  -->
+  <!-- Start Work -->
+<div class="works" id="work-steps">
+  <h2 class="main-title">How It Works - Nature Conservation</h2>
+  <div class="container">
+    <div class="image">
+      <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735113524/elm-7584638_960_720_ajz9pf.png" alt="Nature Work Steps">
+    </div>
+    <div class="boxes">
+      <div class="box">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735229528/step1_fvbe4a.png" alt="Step 1">
+        <div class="text">
+          <h3>Environmental Analysis</h3>
+          <p>We assess the environmental challenges and opportunities for conservation, ensuring our strategies align with nature's needs.</p>
+        </div>
+      </div>
+      <div class="box">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735229528/step2_lxvz0k.png" alt="Step 2">
+        <div class="text">
+          <h3>Eco-Architecture</h3>
+          <p>We design sustainable habitats and structures that work in harmony with the environment, minimizing ecological impact.</p>
+        </div>
+      </div>
+      <div class="box">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735229530/step3_fqpr4b.png" alt="Step 3">
+        <div class="text">
+          <h3>Green Development</h3>
+          <p>Our development process focuses on using renewable resources and creating solutions that preserve the planet's biodiversity.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End Work -->
+
+<!-- Start Events -->
+<div class="events" id="events">
+  <h2 class="main-title">Latest Environmental Events</h2>
+  <div class="container">
+    <img class="left" src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735114089/ladybug-1323381_960_720_lf7lzk.png" alt="Environmental Events">
+    <img class="right" src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735114089/ladybug-1323381_960_720_lf7lzk.png" alt="Environmental Events">
+    <div class="time-right">
+      <div class="time-boxes">
+        <div class="box">
+          <h2>0- <br> 100</h2>
+          <p>days</p>
+        </div>
+        <div class="box">
+          <h2>0- <br> 12</h2>
+          <p>hours</p>
+        </div>
+        <div class="box">
+          <h2>0- <br> 30</h2>
+          <p>seconds</p>
+        </div>
+        <div class="box">
+          <h2>0- <br> 15</h2>
+          <p>minutes</p>
+        </div>
+      </div>
+      <h2>Green Earth Conference 2024</h2>
+      <p>Join us at the Green Earth Conference, where experts will discuss sustainable living, renewable energy, and nature conservation. Together, we can make a difference.</p>
+    </div>
+  </div>
+  <form action="">
+    <input type="text" placeholder="Enter your email">
+    <input type="submit" value="Subscribe">
+  </form>
+</div>
+
+   <!-- End Events -->
+   <!-- start pricing  -->
+   <div class="pricing" id="pricing">
+    <h2 class="main-title">Nature Conservation Plans</h2>
+    <div class="container">
+      <div class="box">
+        <div class="head">
+          <h3>Basic Conservation</h3>
+          <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735229527/basicplan_bugtx4.png" alt="Basic Plan">
+          <h2>$15</h2>
+          <span>per month</span>
+        </div>
+        <ul class="details">
+          <li>5 Trees Planted</li>
+          <li>1 Wildlife Shelter</li>
+          <li>Monthly Newsletter</li>
+          <li>Basic Eco-Tips</li>
+          <li>Support for Local Ecosystems</li>
+        </ul>
+        <a href="#" class="choice">Choose Plan</a>
+      </div>
+      <div class="box popular">
+        <div class="label">Most Popular</div>
+        <div class="head">
+          <h3>Advanced Conservation</h3>
+          <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735229527/proplan_cidtua.jpg" alt="Professional Plan">
+          <h2>$30</h2>
+          <span>per month</span>
+        </div>
+        <ul class="details">
+          <li>15 Trees Planted</li>
+          <li>3 Wildlife Shelters</li>
+          <li>Quarterly Reports</li>
+          <li>Basic Eco-Tips & Tricks</li>
+          <li>Involvement in Local Projects</li>
+        </ul>
+        <a href="#" class="choice">Choose Plan</a>
+      </div>
+      <div class="box">
+        <div class="head">
+          <h3>Professional Conservation</h3>
+          <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735229526/advanceplan_uxm0h1.png" alt="Advanced Plan">
+          <h2>$45</h2>
+          <span>per month</span>
+        </div>
+        <ul class="details">
+          <li>30 Trees Planted</li>
+          <li>5 Wildlife Shelters</li>
+          <li>Annual Eco-Conference Access</li>
+          <li>Personalized Sustainability Report</li>
+          <li>Priority Support</li>
+        </ul>
+        <a href="#" class="choice">Choose Plan</a>
+      </div>
+    </div>
+  </div>
+  
+   <!-- End pricing  -->
+   <!-- Start video  -->
+   <!-- Start video -->
+<div class="video" id="video">
+  <h2 class="main-title">Top Nature Videos</h2>
+  <div class="container">
+    <div class="holder">
+      <div class="description">
+        <h3>Top Nature Videos <i class="fas fa-leaf"></i></h3>
+        <ul>
+          <li><a href="#">How to Protect Endangered Species</a> <span>5:19</span></li>
+          <li><a href="#">Exploring the Amazon Rainforest</a> <span>11:29</span></li>
+          <li><a href="#">The Importance of Bees in Ecosystems</a> <span>02:39</span></li>
+          <li><a href="#">How to Recycle Effectively</a> <span>7:39</span></li>
+          <li><a href="#">Saving the Coral Reefs</a> <span>8:19</span></li>
+          <li><a href="#">Rewilding the Land: A Success Story</a> <span>3:19</span></li>
+          <li><a href="#">A Guide to Sustainable Living <span>09:10</span></a></li>
+        </ul>
+      </div>
+      <div class="video-right">
+        <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735116656/vidt_vusr1h.jpg" alt="Nature Video Preview">
+        <p>How to Protect Endangered Species</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End video -->
+
+   <!-- Emd video  -->
+   <!-- Start stats  -->
+   <div class="stats" id="stats">
+    <h2>Our Impact on Nature</h2>
+    <div class="container">
+      <div class="box">
+        <i class="fas fa-tree fa-2x fa-fw"></i>
+        <span class="number">300+</span>
+        <span class="text">Trees Planted</span>
+      </div>
+      <div class="box">
+        <i class="fas fa-leaf fa-2x fa-fw"></i>
+        <span class="number">400+</span>
+        <span class="text">Environmental Projects</span>
+      </div>
+      <div class="box">
+        <i class="fas fa-recycle fa-2x fa-fw"></i>
+        <span class="number">12</span>
+        <span class="text">Countries Impacted</span>
+      </div>
+      <div class="box">
+        <i class="fas fa-dollar-sign fa-2x fa-fw"></i>
+        <span class="number">$500K+</span>
+        <span class="text">Funds Raised for Nature</span>
+      </div>
+    </div>
+  </div>
+  
+   <!-- End stats  -->
+   <!-- Start Discount -->
+   <!-- Start Discount -->
+<div class="discount" id="discount">
+  <div class="box-one">
+    <h2>We Offer Eco-Friendly Discounts</h2>
+    <p>Join us in our environmental mission! Get exclusive discounts for contributing to a greener planet. Every little bit helps, and we are here to reward your efforts. From tree planting to sustainable products, enjoy savings while making a positive impact.</p>
+    <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735111743/discount1_fmhiyr.png" alt="Eco-Friendly Discount">
+  </div>
+  <div class="box-two">
+    <h2 class="request">Request Your Eco-Discount</h2>
+    <form>
+      <input type="text" placeholder="Your Name">
+      <input type="email" placeholder="Your Email">
+      <input type="number" placeholder="Your Phone">
+      <textarea placeholder="Tell us about your eco-friendly actions"></textarea>
+      <input type="submit" value="Request Discount">
+    </form>
+  </div>
+</div>
+<!-- End Discount -->
+
+<!-- Start Footer -->
+<div class="footer">
+  <div class="container">
+    <div class="box">
+      <p class="Abdelilah">Abdelilah</p>
+      <div class="icons">
+        <a href="#"><i class="fab fa-facebook fa-3x"></i></a>
+        <a href="#"><i class="fab fa-twitter fa-3x"></i></a>
+        <a href="#"><i class="fab fa-youtube fa-3x"></i></a>
+      </div>
+      <p class="text">Committed to sustainability, our mission is to foster eco-friendly solutions for all.</p>
+    </div>
+    <div class="box">
+      <ul>
+        <li><a href="">About Us</a></li>
+        <li><a href="">Our Projects</a></li>
+        <li><a href="">Eco-Discounts</a></li>
+        <li><a href="">Partners</a></li>
+        <li><a href="">Contact</a></li>
+      </ul>
+    </div>
+    <div class="box fourth">
+      <div class="line">
+        <i class="fas fa-map-marker-alt fa-fw"></i><p>45 Sustainability Ave, Earth Conservation Center, Eco Village, New York, NY 10001</p>
+      </div>
+      <div class="line">
+        <i class="far fa-clock fa-fw"></i><p>Business Hours: 9:00 AM to 6:00 PM</p>
+      </div>
+      <div class="line">
+        <i class="fas fa-phone-volume fa-fw"></i><p>+1234567890 <br> +0987654321</p>
+      </div>
+    </div>
+    <div class="box footer-gallery">
+      <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735112451/gallery1_pnsy6k.jpg" alt="">
+      <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735112412/gallery2_lhkjv9.jpg" alt="">
+      <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735112347/gallery3_afmabv.jpg" alt="">
+      <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735112359/gallery4_odcpni.jpg" alt="">
+      <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735111883/gallery5_mvc9c3.jpg" alt="">
+      <img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735112387/gallery6_znlcqb.jpg" alt="">
+    </div>
+  </div>
+  <p>Made by Abdelilah for a greener planet</p>
+</div>
+<!-- End Footer -->
+
+   <!-- End footer -->
+   <!-- look for problems in z index in father background and child and pseudo-elemens  -->
+   </body>
+</html>

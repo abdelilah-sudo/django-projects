@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Manager</title>
+    <!-- Add Bootstrap CSS link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS for styling -->
+    <style>
+        body {
+            background: linear-gradient(135deg, #f0f4f7, #e2e8f0); /* Light gradient background */
+            font-family: 'Arial', sans-serif; /* Smooth font */
+            color: #333; /* Dark text for readability */
+            margin: 0; /* Remove default margin */
+            padding: 0; /* Remove default padding */
+        }
+        .search-input {
+            width: 337px;
+            padding: 5px;
+            border: 1px solid;
+            border-radius: 10px;
+        }
+
+        /* Navbar custom styling */
+        .navbar {
+            border-bottom: 1px solid #ddd; /* Subtle border below the navbar */
+            padding-left: 130px; /* Add more space to the left of the navbar */
+            padding-right: 130px; /* Add more space to the right of the navbar */
+            background-color: #202a37; /* Dark blue background color */
+        }
+
+        /* Container to wrap the main content */
+        .content-container {
+            max-width: 1140px; /* Limit width of content */
+            margin: 0 auto; /* Center the content */
+            padding-top: 20px; /* Add padding to the top */
+            padding-left: 30px; /* Add more space to the left */
+            padding-right: 30px; /* Add more space to the right */
+        }
+
+        /* Custom links in navbar */
+        .navbar-nav .nav-item {
+            margin-right: 20px; /* Space between each nav item */
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1rem; /* Set a comfortable font size for the links */
+            font-weight: normal; /* Remove boldness */
+        }
+
+        /* Hover effect for navbar links */
+        .navbar-nav .nav-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Custom styling for welcome back message */
+        .welcome-message {
+            background-color: #e0f7fa; /* Light cyan background */
+            color: #00695c; /* Dark cyan text for readability */
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 10px 0;
+            width: fit-content;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation bar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <!-- Logo and Home link -->
+            <a class="navbar-brand" href="/">Task Manager</a>
+            <!-- Navbar toggle for small screens -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Navbar links -->
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{% url 'tasks:display_tasks' %}">View Tasks</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{% url 'tasks:create_task' %}">Add Task</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{% url 'tasks:delete_all_tasks' %}">Delete All</a>
+                        </li>
+                        <li class="nav-item">
+                            <form method="POST" action="{% url 'accounts:logout' %}">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-link nav-link text-white">Log out</button>
+                            </form>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{% url 'accounts:sign-up' %}">Sign Up</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white" href="{% url 'accounts:login' %}">Login</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main content area wrapped in container -->
+    <div class="content-container">
+        {% block content %}{% endblock %}
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

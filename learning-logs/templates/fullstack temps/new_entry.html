@@ -1,0 +1,25 @@
+{% extends "fullstack temps/base.html" %}
+{% load bootstrap5 %}
+{% block content %}
+<div class="container mt-5">
+    <h1 class="text-success mb-4">Add a New Entry</h1>
+
+    <div class="card shadow-sm p-4">
+        <p class="lead mb-3">
+            New Entry for: <strong class="text-success">{{ topic.text }}</strong>
+        </p>
+
+        <form method="post" action="" class="form">
+            {% csrf_token %}
+            {% bootstrap_form form %}
+            {% buttons %}
+                <button type="submit" class="btn btn-success btn-sm">Add Entry</button>
+            {% endbuttons %}
+        </form>
+    </div>
+
+    <a href="{% url 'fullstack:topic' topic.id %}" class="btn btn-dark mt-4">
+        Back to Topic
+    </a>
+</div>
+{% endblock content %}

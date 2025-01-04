@@ -1,0 +1,84 @@
+{% extends 'main temps/pbase.html' %}
+{% load static %}
+
+{% block content %}
+{% block extra_head %}
+<style>/* General body styling */
+    body {
+        background-image: url(https://res.cloudinary.com/dsg9dgcei/image/upload/v1735070612/landing1_b0ttdv.jpg);  /* Replace with your image path */
+        background-size: cover;  /* Ensures the image covers the whole screen */
+        background-position: center center;  /* Centers the image */
+        background-attachment: fixed;  /* Makes the background fixed during scrolling */
+        color:  black;  /* Makes sure the text stands out against the background */
+        font-family: Arial, sans-serif;  /* Optional: You can choose your desired font */
+        padding: 0;
+        margin: 0;
+        height: 100vh;  /* Ensures the body covers the full viewport height */
+        text-align: center;  /* Centers your text */
+    }
+    
+    /* Home container styling */
+    .home-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        margin-left: -500px;
+    }
+    
+    /* Headline styling */
+    .headline {
+        font-size: 4rem;
+        font-weight: bold;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Soft shadow for emphasis */
+        margin-bottom: 20px;
+    
+    }
+    
+    /* Tagline styling */
+    .tagline {
+        font-size: 1.5rem;
+        font-style: italic;
+        margin-bottom: 10px;
+        margin-top: -8px;
+    }
+    
+    /* Intro paragraph styling */
+    .intro {
+        font-size: 1.4rem;
+        line-height: 1.8;
+        max-width: 700px;
+        margin-bottom: 30px;
+        font-family: monospace;
+        color: black;
+        margin-top: -4px;
+    }
+    
+    /* Call-to-action button */
+    .cta-btn {
+        display: inline-block;
+        padding: 12px 25px;
+        background-color: #ff8c00; /* Orange for CTA button */
+        color: white;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border-radius: 5px;
+        text-decoration: none;
+        transition: background-color 0.3s, transform 0.3s ease;
+    }
+    
+    .cta-btn:hover {
+        background-color: #e67e00; /* Darker orange on hover */
+        transform: translateY(-3px); /* Slight lift effect */
+    }
+    </style>{% endblock %}
+    <div class="home-container">
+        <h1 class="headline">Devjourney</h1>
+        <pre><p class="tagline">Coding my Future..., one line at a time...</p></pre>
+        <p class="intro">
+            Welcome to Devjourney, a place where every line of code is a step along my adventure. Like a nomad exploring uncharted waters, I’m on a continuous journey to learn and grow. This site reflects my passion for development. Join me as I discover new territories...
+        </p>
+    </div>
+{% endblock content %}

@@ -1,0 +1,87 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevJourney</title>
+    <link rel="icon" href="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735229540/favicon1_d8gnvk.png" type="image/x-icon">
+    <style>/* General Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: linear-gradient(135deg, #29db30, #62755d); /* Rich teal to soft purple gradient */
+            padding: 10px 30px;
+        }
+        
+        /* Logo Styles */
+        .logo img {
+            height: 40px; /* Adjust size as needed */
+            width: auto;
+        }
+        
+        /* Navbar Links */
+        .nav-links a {
+            margin: 0 20px;
+            text-decoration: none;
+            color: #fff; /* Light text color */
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+        }
+        
+        .nav-links a:hover {
+            color: #ff8c00; /* Vibrant orange for hover */
+        }
+        
+        /* Navbar Responsive Behavior */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        
+            .nav-links {
+                width: 100%;
+                text-align: center;
+                margin-top: 10px;
+            }
+        
+            .nav-links a {
+                display: block;
+                padding: 10px;
+            }
+        }
+        </style>
+
+    <!-- Render extra stylesheets or other head elements here -->
+ 
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">
+            <a href="/"><img src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735229556/logo_gls3ty.jpg" alt="DevJourney Logo"></a>
+        </div>
+        <div class="nav-links">
+            <a href="{% url 'portfolio:phome' %}">Home</a>
+            <a href="{% url 'portfolio:about' %}">About</a>
+            <a href="{% url 'portfolio:skills' %}">My skills</a>
+            <a href="{% url 'portfolio:projects' %}">My projects</a>
+        </div>
+    </nav>
+
+    <!-- Content Block -->
+    {% block content %}
+    {% endblock content %}
+
+</body>
+</html>

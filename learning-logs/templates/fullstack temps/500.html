@@ -1,0 +1,10 @@
+{% extends "fullstack temps/base.html" %}
+
+<!-- 505.html -->
+{% block page_header %}
+    <div class="container text-center">
+        <h1 class="display-4 text-warning">Oops! Something went wrong on our side.</h1>
+        <p class="lead">We're sorry, but it seems there was an issue with the server. Please try again later.</p>
+        <a class="btn btn-primary btn-lg mt-3" href="{% url 'fullstack:home' %}">Go back to Home</a>
+    </div>
+{% endblock page_header %}

@@ -1,0 +1,12 @@
+{% extends 'fullstack temps/base.html' %}
+
+{% block page_header %}
+<div class=" py-5" style="background: linear-gradient(to right, #004e92, #000428); height: 50vh; display: flex; align-items: center; justify-content: center;margin-top: 130px;border-radius: 20px;">
+    <div class="container text-center text-white">
+        <h1 class="display-3 fw-bold mb-4">Track Your Learning Journey</h1>
+        <p class="lead mb-5">Create your own Learning Log, stay on top of your studies, and record your progress as you learn new topics.</p>
+        <!-- Start Logging Button -->
+        <a href="{% url 'users:login' %}" class="btn btn-light btn-lg">Get Started </a>
+    </div>
+</div>
+{% endblock page_header %}

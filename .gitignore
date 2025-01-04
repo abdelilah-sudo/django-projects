@@ -1,0 +1,33 @@
+# Python
+*.pyc
+__pycache__/
+*.pyo
+
+# Environment (Virtual Environments)
+Lib/
+pyvenv.cfg
+
+# Django
+db.sqlite3
+*.log
+media/
+staticfiles/
+Scripts/
+images
+# VSCode
+.vscode/
+# System files
+.DS_Store
+Thumbs.db
+
+# For learning-logs app
+learning-logs/__pycache__/
+learning-logs/*.sqlite3
+learning-logs/learning-logs/
+learning-logs/learning-logs/pyvenv.cfg
+
+# For to-do-app app
+to-do-app/__pycache__/
+to-do-app/*.sqlite3
+to-do-app/to-do-app/
+to-do-app/to-do-app/pyvenv.cfg

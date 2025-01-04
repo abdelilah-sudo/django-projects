@@ -1,0 +1,23 @@
+{% extends "fullstack temps/base.html" %}
+{% load bootstrap5 %}
+{% block content %}
+<div class="container mt-5 d-flex justify-content-center"> <!-- Center the form -->
+    <div class="col-md-6 col-lg-4"> <!-- Control width with column classes -->
+        <h2 style="margin-top: -60px;" class="mb-0 text-center">Register</h2> <!-- Center align the heading -->
+        <form method="post" action="{% url 'users:register' %}" class="needs-validation" novalidate>
+            {% csrf_token %}
+            {% bootstrap_form form %} <!-- Using Bootstrap form rendering -->
+
+            <input type="hidden" name="next" value="{% url 'fullstack:home' %}" />
+            
+            <!-- Updated Register Button -->
+            <button 
+                type="submit" 
+                class="btn btn-primary w-100 shadow-sm" 
+                style="border-radius: 10px; font-weight: bold; padding: 10px 20px;background: linear-gradient(to right, #004e92, #000428)">
+                Register
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock content %}

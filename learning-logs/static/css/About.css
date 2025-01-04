@@ -1,0 +1,65 @@
+/* about.css */
+.about-section {
+    background-size: cover; /* Ensures the background image covers the section */
+    background-position: center; /* Centers the image */
+    padding: 40px 20px;
+    background-image: url(https://res.cloudinary.com/dsg9dgcei/image/upload/v1735071314/about_ws9v3m.jpg);
+}
+
+.about-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(45deg, #a03032b8, #4caf50d1);    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    padding: 20px;
+    margin-bottom: 40px; /* Spacing between sections */
+    max-width: 700px;
+    margin-left: auto; /* Centers the section */
+    margin-right: auto;
+}
+.right, .left {
+    width: 200px;
+    height: 200px;
+    object-fit: cover; /* Ensures the image is cropped proportionally */
+    border-radius: 50%;
+}
+.right {
+    margin-left: 20px;
+}
+.left {
+    margin-right: 20px;
+}
+.about-item p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: white;
+    flex: 1;
+    font-family: monospace;
+    text-align: justify;
+}
+.about-footer {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    color: white;
+    font-family: monospace;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .about-item {
+        flex-direction: column; /* Stack image and text vertically on small screens */
+        text-align: center;
+    }
+
+    .about-item img {
+        margin: 0 auto 15px;
+    }
+
+    .about-item p {
+        text-align: justify;
+    }
+}

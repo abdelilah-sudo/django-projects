@@ -1,0 +1,99 @@
+/* Skills.css */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f5f7fa;
+    color: #333;
+}
+
+.skills-section {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.skills-heading {
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 30px;
+    color: #007acc;
+}
+
+.skills-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Ensures responsiveness */
+}
+
+.skills-box {
+    flex: 1;
+    min-width: 300px; /* Ensures cards don't shrink too small */
+    padding: 20px;
+    background: #f0f4f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    text-align: center;
+    border: #ccc solid 1px;
+}
+
+.skills-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+.skills-title {
+    font-size: 1.8em;
+    margin-bottom: 15px;
+    color: #444;
+    border-bottom: 2px solid #007acc;
+    display: inline-block;
+    padding-bottom: 4px; 
+}
+
+.skills-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.skills-list li {
+    font-size: 1.2em;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: white;
+    position: relative;
+    transition: background-color 0.3s, transform 0.3s;
+    background: #4CAF50;
+    text-align: center;
+}
+
+.skills-list li:hover {
+    transform: translateX(5px);
+}
+
+.call-to-action {
+    text-align: center;
+    font-size: 1.2em;
+    margin-top: 30px;
+    color: #444;
+}
+
+.call-to-action a {
+    color: #007acc;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+.call-to-action a:hover {
+    color: #005a8d;
+}

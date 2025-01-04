@@ -1,0 +1,29 @@
+{% extends 'fullstack temps/base.html' %}
+
+{% block page_header %}
+<h3>Topic: {{ topic|capfirst }}</h3>
+{% endblock page_header %}
+
+{% block content %}
+<p>
+    <a href="{% url 'fullstack:new_entry' topic.id %}" class="btn btn-primary btn-sm" style="font-size: 0.8rem; padding: 0.25rem 0.5rem;">Add New Entry</a>
+</p>
+
+
+{% for entry in entries %}
+ <div class="card mb-3">
+     <h4 class="card-header d-flex justify-content-between">
+         {{ entry.date_added|date:'M d, Y H:i' }}
+         <small>
+             <a href="{% url 'fullstack:edit_entry' entry.id %}" class="btn btn-warning btn-sm">Edit Entry</a>
+             <a href="{% url 'fullstack:delete_entry' entry.id %}" class="btn btn-danger btn-sm">Delete Entry</a>
+         </small>
+     </h4>
+     <div class="card-body">
+         {{ entry.text|linebreaks }}
+     </div>
+ </div>
+{% empty %}
+<p>There are no entries for this topic yet.</p>
+{% endfor %}
+{% endblock content %}

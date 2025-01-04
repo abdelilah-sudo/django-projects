@@ -1,0 +1,9 @@
+{% extends "fullstack temps/base.html" %}
+{% block content %}
+<div class="container d-flex flex-column justify-content-center align-items-center" style="height: 80vh;">
+    <div class="alert alert-success text-center" role="alert" style="font-size: 1.5rem; max-width: 600px;">
+        <p>You have been logged out. Thank you for visiting!</p>
+    </div>
+    <a class="btn btn-primary mt-3" href="{% url 'fullstack:home' %}">Go Back</a>
+</div>
+{% endblock content %}

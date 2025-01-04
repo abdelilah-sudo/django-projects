@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-9 col-md-10 col-sm-12">
+                <!-- Elegant Box Container with Soft Gradient Background and Shadow -->
+                <div class="card shadow-lg rounded-lg border-0" style="background: linear-gradient(135deg, #f0f4f7, #e2e8f0); padding: 40px; border-radius: 20px;">
+                    <!-- Page Title and Description -->
+                    <div class="text-center mb-4">
+                        <h1 class="display-4 text-primary" style="font-weight: 600;">Welcome to Task Manager</h1>
+                        <p class="lead text-muted" style="font-size: 1.1rem;">
+                            Stay organized and boost your productivity with Task Manager. 
+                            Manage tasks, track progress, and never miss a deadline again.
+                        </p>
+                    </div>
+
+                    <!-- Static Text without Animation -->
+                    <div class="text-center mb-4">
+                        <p class="h4 text-primary" style="font-weight: 500; color: black;">
+                            Success is planning, and planning is success!
+                        </p>
+                    </div>
+
+                    <!-- Action Section inside Box -->
+                    <div class="text-center">
+                        <p class="h5" style="font-size: 1.1rem; color: #495057; margin-bottom: 20px;">
+                            Get started by logging in or signing up.
+                        </p>
+
+                        <div>
+                            <!-- Elegant Login Link -->
+                            <a href="{% url 'accounts:login' %}" class="btn btn-outline-primary text-decoration-none" style="font-size: 1.1rem; font-weight: 500; padding: 12px 24px;">
+                                Log In
+                            </a>
+                            <span class="mx-3" style="font-size: 1.1rem; color: #495057;">or</span>
+                            <!-- Elegant Register Link -->
+                            <a href="{% url 'accounts:sign-up' %}" class="btn btn-outline-success text-decoration-none" style="font-size: 1.1rem; font-weight: 500; padding: 12px 24px;">
+                                Register
+                            </a>
+                        </div>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

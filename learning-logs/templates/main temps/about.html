@@ -1,0 +1,108 @@
+{% extends 'main temps/pbase.html' %}
+{% load static %}
+
+{% block content %}
+
+{% block extra_head %}
+<style>
+/* about.css */
+.about-section {
+    background-size: cover; /* Ensures the background image covers the section */
+    background-position: center; /* Centers the image */
+    padding: 40px 20px;
+    background-image: url(https://res.cloudinary.com/dsg9dgcei/image/upload/v1735071314/about_ws9v3m.jpg);
+}
+
+.about-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(45deg, #a03032b8, #4caf50d1);    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
+    padding: 20px;
+    margin-bottom: 40px; /* Spacing between sections */
+    max-width: 700px;
+    margin-left: auto; /* Centers the section */
+    margin-right: auto;
+}
+.right, .left {
+    width: 200px;
+    height: 200px;
+    object-fit: cover; /* Ensures the image is cropped proportionally */
+    border-radius: 50%;
+}
+.right {
+    margin-left: 20px;
+}
+.left {
+    margin-right: 20px;
+}
+.about-item p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: white;
+    flex: 1;
+    font-family: monospace;
+    text-align: justify;
+}
+.about-footer {
+    font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+    color: white;
+    font-family: monospace;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .about-item {
+        flex-direction: column; /* Stack image and text vertically on small screens */
+        text-align: center;
+    }
+
+    .about-item img {
+        margin: 0 auto 15px;
+    }
+
+    .about-item p {
+        text-align: justify;
+    }
+}
+
+</style>
+{% endblock extra_head %}
+<section class="about-section">
+
+    <!-- Second Section -->
+    <div class="about-item">
+        <img class="left" src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735071864/abdelilah1_wqrfxr.jpg" alt="Abdelilah Taano">
+        <p>Hello! I am Abdelilah Taano, A passionate developer. For the first three years after high school, I felt lost. I spent so much time trying to figure out my path in life, constantly switching directions and exploring different fields. Originally, I was a science student, but life took me down a different road.</p>
+    </div>
+
+    <!-- Third Section -->
+    <div class="about-item">
+        <p>As I explored different fields, I discovered programming. I never imagined it would become my future or something I’d truly enjoy, but every time I worked on it, I felt a sense of excitement.</p>
+        <img class="right" src="https://res.cloudinary.com/dsg9dgcei/image/upload/v1735071891/abdelilah2_klhgjx.jpg" alt="Abdelilah Taano">
+
+    </div>
+
+    <!-- Fourth Section -->
+    <div class="about-item">
+        <p>Now, I embrace my journey as a developer. Programming isn’t just what I do—it’s part of who I am. I continue to explore the vast landscape of tech, constantly learning and improving.</p>
+    </div>
+    <p style=" font-size: 18px;
+    text-align: center;
+    margin-top: 20px;
+    border: 1px solid #ddd;
+    padding-top: 15px;
+    color: white;
+    font-family: monospace;
+    background: linear-gradient(45deg, #f4433663, #4caf508f);
+    border-radius: 10px;" class="about-footer">If programmers 
+    find it difficult to decide which programming field they
+    like the most,I find it difficult to decide which one I do not like...
+    </p>
+</section>
+{% endblock content %}

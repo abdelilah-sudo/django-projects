@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container my-5">
+    <!-- Display messages if any -->
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-info" role="alert">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8 col-sm-12">
+            <!-- Elegant Card for Updating Task -->
+            <div class="card shadow-lg rounded-lg border-0">
+                <div class="card-header text-center bg-primary text-white rounded-top">
+                    <h5 class="mb-0" style="font-weight: 600;">Create Task</h5>
+                </div>
+                <div class="card-body p-4" style="background: linear-gradient(135deg, #f7f9fc, #eef2f7);">
+                    <!-- Update Task Form -->
+                    <form action="{% url 'tasks:create_task' %}" method="POST">
+                        {% csrf_token %}
+                        
+                        <!-- Title Field -->
+                        <div class="mb-4">
+                            <label for="{{ form.title.id_for_label }}" class="form-label" style="font-weight: 500;">Title</label>
+                            <input type="text" name="{{ form.title.name }}" class="form-control" id="{{ form.title.id_for_label }}" >
+                        </div>
+                        
+                        <!-- Description Field -->
+                        <div class="mb-4">
+                            <label for="{{ form.description.id_for_label }}" class="form-label" style="font-weight: 500;">Description</label>
+                            <textarea name="{{ form.description.name }}" class="form-control" id="{{ form.description.id_for_label }}"></textarea>
+                        </div>
+                        
+                        <!-- Deadline Field -->
+                        <div class="mb-4">
+                            <label for="{{ form.deadline.id_for_label }}" class="form-label" style="font-weight: 500;">Deadline</label>
+                            <input type="date" name="{{ form.deadline.name }}" class="form-control" id="{{ form.deadline.id_for_label }}" value="{{ form.deadline.value }}">
+                        </div>
+                        
+                        <!-- Status Field -->
+                        <div class="mb-4">
+                            <label for="{{ form.status.id_for_label }}" class="form-label" style="font-weight: 500;">Status</label>
+                            <select name="{{ form.status.name }}" class="form-select" id="{{ form.status.id_for_label }}">
+                                <option value="True" {% if form.status.value == 'True' %} selected {% endif %}>Completed</option>
+                                <option value="False" {% if form.status.value == 'False' %} selected {% endif %}>Pending</option>
+                            </select>
+                        </div>
+
+                        <!-- Submit Button -->
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-success w-100 py-2">Create</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
